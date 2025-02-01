@@ -1,0 +1,422 @@
+{
+  "id": "267fae00-afa4-4651-af7c-9975586aec31",
+  "version": "2.0",
+  "name": "HW Viktor Kulaha L25",
+  "url": "https://rozetka.com.ua/",
+  "tests": [{
+    "id": "0b7ccd55-8e6e-462b-9ef3-eccbefb09460",
+    "name": "Adding one product to the cart",
+    "commands": [{
+      "id": "945f971a-d9cf-47fc-b062-2eb8ea5b5482",
+      "comment": "Open product page",
+      "command": "open",
+      "target": "/ua/469292389/p469292389/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "88da086c-1d9d-4f64-acb5-ee2d835b251c",
+      "comment": "Store product name value",
+      "command": "storeText",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-title-block/div/div[1]/div/h1",
+      "targets": [],
+      "value": "product_name"
+    }, {
+      "id": "85569798-126f-4517-bbf2-9453a10797f9",
+      "comment": "Click on \"Buy\" button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-product-main-info/div/div[2]/div/div[3]/rz-product-buy-btn/rz-buy-button/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3256d22-71f9-40ca-aeb5-c107ae4ed256",
+      "comment": "Check if cart window is open",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "ecfa25f0-e03d-437c-9acd-324a61b6b7cb",
+      "comment": "Verify product name",
+      "command": "verifyText",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[1]/div[2]/rz-button-product-page/rz-indexed-link/a",
+      "targets": [],
+      "value": "${product_name}"
+    }, {
+      "id": "aa8e33bb-9cf6-4b5c-b820-6fefdecde9a5",
+      "comment": "Open cart page",
+      "command": "open",
+      "target": "/ua/cart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fee28bf7-2371-4aed-bfb8-034a4956d3c5",
+      "comment": "Delete product from cart (1/2) Click on ProductActions button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0b75e063-8147-46ac-bfb4-119b11639dca",
+      "comment": "Delete product from cart (2/2) Click on Видалити button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]/ul/li[1]/rz-trash-icon/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82d49f5d-e735-4847-bd37-ea3f101b22a9",
+      "comment": "Check if cart is empty",
+      "command": "verifyText",
+      "target": "css=h4[class=\"cart-dummy__heading\"]",
+      "targets": [],
+      "value": "Кошик порожній"
+    }]
+  }, {
+    "id": "868f067c-4274-449f-b450-2862df25e789",
+    "name": "Changing product quantity in cart using \"+\" button",
+    "commands": [{
+      "id": "8553ed9b-b041-42f3-971a-1d80ab72dfe6",
+      "comment": "Open product page",
+      "command": "open",
+      "target": "ua/steelseries_62521/p254392631/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "13bd624c-a697-44c7-b7d1-95bb688708f7",
+      "comment": "Click on \"Buy\" button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-product-main-info/div/div[2]/div/div[3]/rz-product-buy-btn/rz-buy-button/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d938fe0e-9512-4ebd-8c83-75fcc8c0b578",
+      "comment": "Wait for cart window to open",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "0e451e63-570e-4e3e-8555-ff4cb8bd660f",
+      "comment": "Store initial value of product quantity",
+      "command": "storeValue",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "initial_value"
+    }, {
+      "id": "88b3bc73-e998-42e2-aac0-91ab47210d42",
+      "comment": "Click on \"+\" button",
+      "command": "click",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/button[2]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed98aeb2-7e4b-4d4a-9f6c-12e9c69132c0",
+      "comment": "Calculate expected updated quantity value",
+      "command": "executeScript",
+      "target": "return Number(${initial_value})+1",
+      "targets": [],
+      "value": "expected_value"
+    }, {
+      "id": "f7ed8cac-9cd1-4abb-ae98-b220d7140479",
+      "comment": "Verify if product quantity number is correct",
+      "command": "verifyValue",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "${expected_value}"
+    }, {
+      "id": "3599497d-5869-4cf1-9e59-f9d11d285d4d",
+      "comment": "Open Cart",
+      "command": "open",
+      "target": "/ua/cart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "50be8905-f288-41cb-80d8-fb61229f07fc",
+      "comment": "Delete product from cart (1/2) Click on ProductActions button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3f3f33d6-8341-40b4-9097-325145bd9d2b",
+      "comment": "Delete product from cart (2/2) Click on Видалити button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]/ul/li[1]/rz-trash-icon/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ae8b958-78c4-420c-a269-767f016ff793",
+      "comment": "Check if cart is empty",
+      "command": "verifyText",
+      "target": "css=h4[class=\"cart-dummy__heading\"]",
+      "targets": [],
+      "value": "Кошик порожній"
+    }]
+  }, {
+    "id": "11121fe4-0068-463e-811f-04aa67ba335f",
+    "name": "Changing product quantity in cart using input in product quantity field",
+    "commands": [{
+      "id": "9bc2536c-5fa6-4361-940e-8559ceda224a",
+      "comment": "Open product page",
+      "command": "open",
+      "target": "ua/472871734/p472871734/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eaa7e3fc-fc4e-4d53-9300-a1d203ba3c4a",
+      "comment": "Click on \"Buy\" button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-product-main-info/div/div[2]/div/div[3]/rz-product-buy-btn/rz-buy-button/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0831eb2-8b6a-483b-9070-6477285d526b",
+      "comment": "Wait for cart window to open",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "11dd52cf-6fdd-4a14-b899-9c34e0c0d9e3",
+      "comment": "Generate and store random integer (1 - 25) as variable",
+      "command": "executeScript",
+      "target": "return Math.floor(Math.random() * 25)",
+      "targets": [],
+      "value": "random_int"
+    }, {
+      "id": "2397ebf9-56a0-4ae9-b096-a8002afce1cc",
+      "comment": "Click on product quantity fileld",
+      "command": "click",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36571fb6-daaa-4fc2-9d6c-274582f29f97",
+      "comment": "Clear product quantity fileld",
+      "command": "type",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "${key_backspace}"
+    }, {
+      "id": "d08e2100-8134-4eca-9377-2382b6f66512",
+      "comment": "Clear product quantity fileld #2 (just in case =))",
+      "command": "type",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "${key_backspace}"
+    }, {
+      "id": "b0922a21-4b38-484b-9a51-159726452f01",
+      "comment": "Input random integer (1 - 25) in product quantity field",
+      "command": "sendKeys",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "${random_int}"
+    }, {
+      "id": "fda76f74-d461-403c-8ba7-d8c4a76a8564",
+      "comment": "Verify cart badge number is correct ",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/div/div[1]/rz-main-header/header/div/div/ul/li[9]/rz-header-cart/button/rz-icon-badge/span",
+      "targets": [],
+      "value": "${random_int}"
+    }, {
+      "id": "701ec46f-e672-470c-bef2-ab8b4f4cd9b2",
+      "comment": "Open Cart",
+      "command": "open",
+      "target": "/ua/cart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9ea422ff-e0e2-4b2a-aa13-3d023a11f3f1",
+      "comment": "Delete product from cart (1/2) Click on ProductActions button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02a1344c-5fa9-4a5d-b0d8-997d48bff7b0",
+      "comment": "Delete product from cart (2/2) Click on Видалити button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]/ul/li[1]/rz-trash-icon/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03660d34-1b99-4bd5-9d19-0238304bb1cc",
+      "comment": "Check if cart is empty",
+      "command": "verifyText",
+      "target": "css=h4[class=\"cart-dummy__heading\"]",
+      "targets": [],
+      "value": "Кошик порожній"
+    }]
+  }, {
+    "id": "82137826-287e-4b29-9f86-0384fe4e2c96",
+    "name": "Verify if the product remains in the cart after page refresh",
+    "commands": [{
+      "id": "9e0e2fbd-d89a-42e8-8eac-9dedb9a2cfce",
+      "comment": "Open product page",
+      "command": "open",
+      "target": "ua/424118292/p424118292/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ed01993-1ccd-4839-8a91-e9faa050841e",
+      "comment": "Click on \"Buy\" button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-product-main-info/div/div[2]/div/div[3]/rz-product-buy-btn/rz-buy-button/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "05f1d3a8-0975-4009-9ed9-920bfe660339",
+      "comment": "Close cart",
+      "command": "click",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/div[1]/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cff853b8-2aa9-4946-b529-7273fc9b4f14",
+      "comment": "Wait for cart badge number to appear",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/div/div[1]/rz-main-header/header/div/div/ul/li[9]/rz-header-cart/button/rz-icon-badge/span",
+      "targets": [],
+      "value": "1"
+    }, {
+      "id": "2f68b93f-f30c-4441-be4c-9c725ca941c5",
+      "comment": "Refresh page",
+      "command": "executeScript",
+      "target": "window.location.reload()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e324a6f2-22c2-4ac2-9c1d-175191907eb9",
+      "comment": "Verify cart badge number is correct ",
+      "command": "verifyText",
+      "target": "xpath=/html/body/rz-app-root/div/div[1]/rz-main-header/header/div/div/ul/li[9]/rz-header-cart/button/rz-icon-badge/span",
+      "targets": [],
+      "value": "1"
+    }, {
+      "id": "16510754-6e4e-40df-87ca-db3c0b3b27fa",
+      "comment": "Open Cart",
+      "command": "open",
+      "target": "/ua/cart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d5d0e96a-2dba-41d8-bf57-fee43d39d269",
+      "comment": "Delete product from cart (1/2) Click on ProductActions button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed042024-153d-4c22-8b98-6df667591ce1",
+      "comment": "Delete product from cart (2/2) Click on Видалити button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]/ul/li[1]/rz-trash-icon/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "19f1fc2d-a7d4-4b3b-85b5-1dd8fe7bf1d4",
+      "comment": "Check if cart is empty",
+      "command": "verifyText",
+      "target": "css=h4[class=\"cart-dummy__heading\"]",
+      "targets": [],
+      "value": "Кошик порожній"
+    }]
+  }, {
+    "id": "c7302f24-3931-4881-a083-e89f3518a493",
+    "name": "Adding more items to the cart than available to order",
+    "commands": [{
+      "id": "ab4ff820-51c4-43f0-951b-2902e1b97f76",
+      "comment": "Open product page",
+      "command": "open",
+      "target": "/ua/logitech_910_005823/p213709267/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01d20ba8-9e91-4b15-a160-c10c380cb6f3",
+      "comment": "Store product name variable",
+      "command": "storeText",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-title-block/div/div[1]/div/h1",
+      "targets": [],
+      "value": "product_name"
+    }, {
+      "id": "082559fb-2f24-4cd6-b9ea-45211d0d34f2",
+      "comment": "Click on \"Buy\" button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"#scrollArea\"]/div[1]/div[2]/div/rz-product-main-info/div/div[2]/div/div[3]/rz-product-buy-btn/rz-buy-button/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1928cd95-d603-4b41-82e7-ae8bfd5480b0",
+      "comment": "Wait for cart window to open",
+      "command": "waitForElementPresent",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "a0ade1d0-ad91-4b7e-adc0-fd4f5ae7f988",
+      "comment": "Click on the product quantity number field",
+      "command": "click",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2debfcd2-4ddb-4886-8902-1bcab6dfad51",
+      "comment": "Clear product quantity number field",
+      "command": "type",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "${key_backspace}"
+    }, {
+      "id": "3cce355d-3d5d-4ab2-8fab-42ee16abc903",
+      "comment": "Input value greater then available to order",
+      "command": "sendKeys",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[2]/rz-cart-counter/div/input",
+      "targets": [],
+      "value": "6"
+    }, {
+      "id": "429e8fe4-4791-4c11-b310-ac97a6081ee7",
+      "comment": "Verify that error message is displayed",
+      "command": "verifyText",
+      "target": "xpath=/html/body/rz-app-root/rz-modal/rz-modal-layout/div[2]/rz-shopping-cart/div/rz-cart-purchases/ul/li/rz-cart-product/div/div[1]/div[2]/p",
+      "targets": [],
+      "value": "товар ${product_name} відпускається у кількості не більше 5 одиниць"
+    }, {
+      "id": "1736b054-5200-4bc7-a7d0-be1d427c5fe6",
+      "comment": "Open cart page",
+      "command": "open",
+      "target": "/ua/cart/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edc7140c-6e3f-41e0-a07a-5a5b415b167e",
+      "comment": "Delete product from cart (1/2) Click on ProductActions button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ee3378c4-7132-49a7-9dc9-9d87315c2d75",
+      "comment": "Delete product from cart (2/2) Click on Видалити button",
+      "command": "click",
+      "target": "xpath=//*[@id=\"cartProductActions0\"]/ul/li[1]/rz-trash-icon/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "27fcde9e-0e62-4850-b915-e7dbfd880bc8",
+      "comment": "Check if cart is empty",
+      "command": "verifyText",
+      "target": "css=h4[class=\"cart-dummy__heading\"]",
+      "targets": [],
+      "value": "Кошик порожній"
+    }]
+  }],
+  "suites": [{
+    "id": "49a93660-abc9-4ca7-807c-ea80946b48ac",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0b7ccd55-8e6e-462b-9ef3-eccbefb09460"]
+  }],
+  "urls": ["https://rozetka.com.ua/"],
+  "plugins": []
+}
